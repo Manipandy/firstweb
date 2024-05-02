@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- For icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Contact</title>
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a2e; /* Dark blue background */
+            color: white; /* White text color */
+            height: 100vh; /* Full viewport height */
+        }
+
+        .contact-container {
+            height: 100%; /* Full height for vertical centering */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+
+        .contact-form {
+            background-color: #2e2e3e; /* Slightly lighter dark blue for form background */
+            padding: 20px; /* Padding around the form */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for a 3D effect */
+        }
+
+        .form-control {
+            background-color: #343a40; /* Dark background for input fields */
+            color: white; /* White text in input fields */
+        }
+
+        .contact-btn {
+            background-color: #f05d23; /* Orange button */
+            color: white; /* White text for button */
+        }
+    </style>
+</head>
+<body>    
+    <div class="contact-container"> <!-- Center the container -->
+        <div class="col-lg-6 col-md-8 col-sm-10 col-12 contact-form"> <!-- Form with padding and centered content -->
+            <div class="d-flex flex-column gap-4">
+                <!-- Name and Email Fields -->
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <input type="text" class="form-control shadow-none" placeholder="Enter Name*" id="name">
+                    </div>
+                    <div class="col-lg-6 col-md-12 mt-4 mt-lg-0">
+                        <input type="email" class="form-control shadow-none" placeholder="Enter Email*" id="email">
+                    </div>
+                </div>
+                
+                <!-- Subject and Phone Fields -->
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <input type="text" class="form-control shadow-none" placeholder="Enter Subject*" id="sub">
+                    </div>
+                    <div class="col-lg-6 col-md-12 mt-4 mt-lg-0">
+                        <input type="text" class="form-control shadow-none" placeholder="Enter Phone Number*" id="phone">
+                    </div>
+                </div>
+                
+                <!-- Message Field -->
+                <div class="row mt-4">
+                    <div class="form-group col-12">
+                        <textarea class="form-control shadow-none" cols="30" id="msg" rows="5" placeholder="Enter Message..."></textarea>
+                    </div>
+                </div>
+                
+                <!-- Send Button -->
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <button id="submit1" class="btn w-100 contact-btn shadow-none">
+                            Send Message to WhatsApp <i class="fa-solid fa-share ps-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript Section -->
+    <script>
+        $("#submit1").click(function() {
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var sub = $("#sub").val();
+            var phn = $("#phone").val();
+            var msg = $("#msg").val();
+      
+            if (name == "") {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Enter Your Name',
+                    position: 'topRight',
+                });
+            } else if (email == "") {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Enter Your Email',
+                    position: 'topRight',
+                });
+            } else if (sub == "") {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Enter Your Subject',
+                    position: 'topRight',
+                });
+            } else if (phn == "") {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Enter Your Number',
+                    position: 'topRight',
+                });
+            } else {
+                var whatsappMessage = `From Your Portfolio \n\n Name: ${name}\nEmail: ${email}\nSubject: ${sub}\nNumber: ${phn}\nMessage: ${msg}`;
+      
+                var whatsappLink = `https://wa.me/8883406843/?text=${encodeURIComponent(whatsappMessage)}`;
+      
+                window.location.href = whatsappLink;
+      
+                $("#name").val("");
+                $("#email").val("");
+                $("#sub").val("");
+                $("#phone").val("");
+                $("#msg").val("");
+            }
+        });
+    </script>
+
+</body>
+</html>
