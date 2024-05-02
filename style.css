@@ -125,13 +125,13 @@ h1 {
 
 h3 {
     font-size: 1.5em; /* Slightly smaller font size */
-    color: #555; /* Medium color for text */
+    color: black; /* Medium color for text */
 }
 
 /* Styling for paragraphs */
 p {
     font-size: 1em; /* Normal font size */
-    color: #666; /* Lighter text color */
+    color: black; /* Lighter text color */
     line-height: 1.5; /* Line spacing for readability */
 }
 
